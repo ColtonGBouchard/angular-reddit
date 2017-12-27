@@ -1,6 +1,7 @@
 # AngularReddit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
+I will be using this project as a way to learn Angular. I plan on adding as much functionality to this in order to make it more of a full featured Reddit clone as I can.
 
 ## Development server
 
