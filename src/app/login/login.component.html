@@ -1,0 +1,8 @@
+<form #f="ngForm" (ngSubmit)="login(f.value)" class="login">
+  <input class="email" placeholder="your email" type="text" />
+  <input class="password" placeholder="your password" type="password" />
+  <button class="submitButton" type="submit">Submit</button>
+</form>
+<button *ngIf="service.isLoggedIn()" class="logoutButton" (click)="logout()">
+  logout
+</button>

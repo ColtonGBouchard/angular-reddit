@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth-service.service';
 import { Component } from '@angular/core';
 import { Article } from './article/article.model';
 
@@ -9,7 +10,7 @@ import { Article } from './article/article.model';
 export class AppComponent {
   articles: Article[];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.articles = [
       new Article('Angular 2', 'http://angular.io', 3),
       new Article('Fullstack', 'http://fullstack.io', 2),

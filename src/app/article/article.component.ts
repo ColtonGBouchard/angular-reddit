@@ -1,3 +1,4 @@
+import { AuthService } from '../services/auth-service.service';
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { Article } from './article.model';
 
@@ -10,7 +11,7 @@ export class ArticleComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
 
-  constructor() {
+  constructor(private authService: AuthService) {
    }
 
    voteUp(): boolean {
