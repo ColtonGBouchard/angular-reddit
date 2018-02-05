@@ -5,7 +5,8 @@ export function fakeBackendFactory(
     backend: MockBackend,
     options: BaseRequestOptions) {
 
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.iy8az1ZDe-_hS8GLDKsQKgPHvWpHl0zkQBqy1QIPOkA';
+  // tslint:disable-next-line:max-line-length
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.iy8az1ZDe-_hS8GLDKsQKgPHvWpHl0zkQBqy1QIPOkA';
 
   backend.connections.subscribe((connection: MockConnection) => {
     // We are using the setTimeout() function to simulate an
@@ -16,9 +17,9 @@ export function fakeBackendFactory(
       //
       if (connection.request.url.endsWith('/api/authenticate') &&
         connection.request.method === RequestMethod.Post) {
-        let body = JSON.parse(connection.request.getBody());
+        const body = JSON.parse(connection.request.getBody());
 
-        if (body.email === 'colton@domain.com' && body.password === '1234') {
+        if (body.email === 'test@test.com' && body.password === 'test') {
           connection.mockRespond(new Response(
             new ResponseOptions({
               status: 200,

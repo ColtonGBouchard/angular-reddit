@@ -1,3 +1,4 @@
+import { SubredditService } from './services/subreddit-service.service';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { fakeBackendProvider } from './helpers/fake-backend';
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     AuthService,
     fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    SubredditService
   ],
   bootstrap: [AppComponent]
 })

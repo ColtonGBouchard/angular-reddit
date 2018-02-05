@@ -13,6 +13,7 @@
     {{ article.title }}
   </a>
   <div class="meta">({{ article.domain() }})</div>
+  <div class="meta">{{ article.subreddit }}</div>
   <ul class="ui big horizontal list voters">
     <li *ngIf="authService.isLoggedIn()" class="item">
       <a href (click)="voteUp()">

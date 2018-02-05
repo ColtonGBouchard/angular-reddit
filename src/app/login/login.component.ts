@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms/src/directives';
 import { Http } from '@angular/http';
 import { AuthService } from '../services/auth-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,8 +14,16 @@ export class LoginComponent {
 
    }
 
-  login(credentials: string) {
-    this.service.login(credentials);
+  login(credentials: NgForm) {
+    this.service.login(credentials)
+    .subscribe(result => {
+        if (result) {
+          console.log('SUCCESS');
+        }
+
+        console.log('FAILURE');
+    });
+
     console.log(credentials);
   }
 
