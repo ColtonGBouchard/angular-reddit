@@ -17,13 +17,13 @@ import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent,
-    LoginComponent
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    LoginComponent
   ],
   providers: [
     AuthService,

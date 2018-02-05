@@ -1,6 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs/Rx';
+import { NgForm } from '@angular/forms/src/directives';
+import { AuthService } from '../services/auth-service.service';
+import { HttpModule } from '@angular/http';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
+import { FormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,7 +13,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      imports: [
+        FormsModule,
+        HttpModule
+      ],
+      providers: [ AuthService ]
     })
     .compileComponents();
   }));
@@ -22,4 +32,24 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should login',
+  inject ([AuthService], ((authService: AuthService)  => {
+    spyOn(authService, 'login').and.returnValue(Observable.of(Boolean));
+    const testForm = <NgForm>{
+      value: {
+        name: 'test',
+        category: 'test'
+      }
+    };
+    component.login(testForm);
+    expect(authService.login).toHaveBeenCalled();
+  })));
+
+  fit('should logout',
+  inject([AuthService], ((authService: AuthService) => {
+    spyOn(authService, 'logout');
+    component.logout();
+    expect(authService.logout).toHaveBeenCalled();
+  })));
 });
