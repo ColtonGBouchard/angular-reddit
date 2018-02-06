@@ -46,7 +46,7 @@ describe('LoginComponent', () => {
     expect(authService.login).toHaveBeenCalled();
   })));
 
-  fit('should logout',
+  it('should logout',
   inject([AuthService], ((authService: AuthService) => {
     spyOn(authService, 'logout');
     component.logout();
