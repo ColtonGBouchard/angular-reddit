@@ -1,0 +1,22 @@
+<form *ngIf="authService.isLoggedIn()" class="ui large form segment">
+  <h3 *ngIf="subredditWarning" class="alert alert-danger">That is not an actual subreddit, doofus</h3>
+  <h3 class="ui header">Add a Link</h3>
+
+  <div class="field">
+    <label for="title">Title:</label>
+    <input name="title" #newtitle>
+  </div>
+  <div class="field">
+    <label for="link">Link:</label>
+    <input name="link" #newlink>
+  </div>
+  <div class="field">
+    <label for="subreddit">Subreddit:</label>
+    <input name="subreddit" #newsubreddit>
+  </div>
+
+  <button (click)="addArticle(newtitle, newlink, newsubreddit)"
+          class="ui positive right floated button">
+    Submit link
+  </button>
+</form>

@@ -1,0 +1,8 @@
+<app-login></app-login>
+<app-add-article [articles]="this.articles"></app-add-article>
+<div class="ui grid posts">
+    <app-article
+    *ngFor="let article of sortedArticles()"
+    [article]="article">
+    </app-article>
+</div>

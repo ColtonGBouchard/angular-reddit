@@ -1,0 +1,8 @@
+<app-add-article [articles]="this.articles"></app-add-article>
+<div class="ui grid posts">
+    <app-article
+    *ngFor="let article of displayArticles()"
+    [article]="article"
+    [routerLink]="['/r', article.subreddit]">
+    </app-article>
+</div>
