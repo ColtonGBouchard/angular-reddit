@@ -15,7 +15,7 @@ export function fakeBackendFactory(
       //
       // Fake implementation of /api/authenticate
       //
-      if (connection.request.url.endsWith('/api/authenticate') &&
+      if (connection.request.url.endsWith('login') &&
         connection.request.method === RequestMethod.Post) {
         const body = JSON.parse(connection.request.getBody());
 

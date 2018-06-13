@@ -10,9 +10,10 @@ export class AuthService {
   }
 
   login(credentials) {
-    return this.http.post('/api/authenticate',
+    return this.http.post('http://localhost:3001/login',
       JSON.stringify(credentials))
       .map(response => {
+        console.log(response);
         const result = response.json();
         if (result && result.token) {
           localStorage.setItem('token', result.token);

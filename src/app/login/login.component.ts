@@ -20,9 +20,7 @@ export class LoginComponent {
         if (result) {
           console.log('SUCCESS');
         }
-
-        console.log('FAILURE');
-    });
+    }, error => console.log(error));
 
     console.log(credentials);
   }

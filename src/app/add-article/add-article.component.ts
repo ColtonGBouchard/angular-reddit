@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Article } from '../article/article.model';
 import { SubredditService } from '../services/subreddit-service.service';
 import { AuthService } from '../services/auth-service.service';
@@ -12,7 +13,7 @@ export class AddArticleComponent implements OnInit {
   subredditWarning: boolean;
   @Input() articles: Article[];
 
-  constructor(private authService: AuthService, private subredditService: SubredditService) {
+  constructor(private authService: AuthService, private subredditService: SubredditService, private http: HttpClient) {
 
   }
 
@@ -20,7 +21,6 @@ export class AddArticleComponent implements OnInit {
     const isSubreddit = this.subredditService.verifySubreddit(subreddit);
 
     if (isSubreddit) {
-      console.log('IS SUBREDDIT');
       this.subredditWarning = false;
     } else {
       this.resetSubreddit(subreddit);
@@ -28,6 +28,10 @@ export class AddArticleComponent implements OnInit {
     }
 
     console.log(`Adding article title: ${title.value} and link: ${link.value} in subreddit: ${subreddit.value}`);
+
+    this.http.post('http://localhost:3001/new-article', new Article(title.value, link.value, subreddit.value, 0))
+    .subscribe(response => console.log(response), error => console.log(error));
+
     this.articles.push(new Article(title.value, link.value, subreddit.value, 0));
     title.value = '';
     link.value = '';
