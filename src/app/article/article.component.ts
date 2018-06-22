@@ -16,7 +16,7 @@ export class ArticleComponent implements OnInit {
    }
 
    voteUp(): boolean {
-    this.http.post('http://localhost:3001/update-score', {'up': 1})
+    this.http.post('http://localhost:3001/update-score', {'up': 1, 'title': this.article.title})
     .subscribe(response => console.log(response), error => console.log(error));
 
      this.article.voteUp();
